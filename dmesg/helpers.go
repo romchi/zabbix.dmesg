@@ -1,5 +1,7 @@
 package dmesg
 
+import "fmt"
+
 type errorString struct {
 	str string
 }
@@ -9,10 +11,12 @@ func (err *errorString) Error() string {
 }
 
 func levelValidate(level string) error {
+	var availableLevels []string
 	for item := range errLevels {
+		availableLevels = append(availableLevels, item)
 		if level == item {
 			return nil
 		}
 	}
-	return &errorString{"Error: error level mismatch"}
+	return &errorString{fmt.Sprintf("Error: error level mismatch, available %s", availableLevels)}
 }
