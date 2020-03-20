@@ -18,5 +18,5 @@ func levelValidate(level string) error {
 			return nil
 		}
 	}
-	return &errorString{fmt.Sprintf("Error: error level mismatch, available %s", availableLevels)}
+	return &errorString{fmt.Sprintf("Error: error level '%s' mismatch, available %s", level, availableLevels)}
 }
