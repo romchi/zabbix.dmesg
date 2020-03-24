@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-03-20T12:22:47Z</date>
+    <date>2020-03-24T07:27:12Z</date>
     <groups>
         <group>
             <name>Templates</name>
+        </group>
+        <group>
+            <name>Templates/Hardware</name>
         </group>
         <group>
             <name>Templates/Modules</name>
@@ -14,12 +17,15 @@
         <template>
             <template>template Module Linux dmesg</template>
             <name>template Module Linux dmesg</name>
-            <description>Collecting counting dmesg messages by error level.&#13;
+            <description>Collect count of dmesg messages by error level.&#13;
 &#13;
 Additional info you can get in repo https://github.com/romchi/zabbix.dmesg</description>
             <groups>
                 <group>
                     <name>Templates</name>
+                </group>
+                <group>
+                    <name>Templates/Hardware</name>
                 </group>
                 <group>
                     <name>Templates/Modules</name>
@@ -48,15 +54,15 @@ Additional info you can get in repo https://github.com/romchi/zabbix.dmesg</desc
                     </preprocessing>
                     <triggers>
                         <trigger>
-                            <expression>{last()}&gt;0&#13;
+                            <expression>{last(#3)}&gt;0&#13;
 and&#13;
 {$DMESG.DISABLE}=0</expression>
                             <name>dmesg &quot;alert&quot; messages increased</name>
-                            <priority>INFO</priority>
+                            <priority>HIGH</priority>
                             <description>Description:&#13;
-    Linux dmesg has errors with level &quot;alert&quot;, posibly there are some problem on the server.&#13;
+    Linux dmesg has errors with level &quot;alert&quot;, there are some problem on the server.&#13;
 &#13;
-Recomendation:&#13;
+Recommendation:&#13;
     Go to server an run command:&#13;
     dmesg -l alert -T</description>
                             <manual_close>YES</manual_close>
@@ -80,15 +86,15 @@ Recomendation:&#13;
                     </preprocessing>
                     <triggers>
                         <trigger>
-                            <expression>{last()}&gt;0&#13;
+                            <expression>{last(#3)}&gt;0&#13;
 and&#13;
 {$DMESG.DISABLE}=0</expression>
                             <name>dmesg &quot;crit&quot; messages increased</name>
-                            <priority>INFO</priority>
+                            <priority>DISASTER</priority>
                             <description>Description:&#13;
-    Linux dmesg has errors with level &quot;crit&quot;, posibly there are some problem on the server.&#13;
+    Linux dmesg has errors with level &quot;crit&quot;, there are some problem on the server.&#13;
 &#13;
-Recomendation:&#13;
+Recommendation:&#13;
     Go to server an run command:&#13;
     dmesg -l crit -T</description>
                             <manual_close>YES</manual_close>
@@ -128,15 +134,15 @@ Recomendation:&#13;
                     </preprocessing>
                     <triggers>
                         <trigger>
-                            <expression>{last()}&gt;0&#13;
+                            <expression>{last(#3)}&gt;0&#13;
 and&#13;
 {$DMESG.DISABLE}=0</expression>
                             <name>dmesg &quot;emerg&quot; messages increased</name>
-                            <priority>INFO</priority>
+                            <priority>HIGH</priority>
                             <description>Description:&#13;
-    Linux dmesg has errors with level &quot;emerg&quot;, posibly there are some problem on the server.&#13;
+    Linux dmesg has errors with level &quot;emerg&quot;, there are some problem on the server.&#13;
 &#13;
-Recomendation:&#13;
+Recommendation:&#13;
     Go to server an run command:&#13;
     dmesg -l emerg -T</description>
                             <manual_close>YES</manual_close>
@@ -160,15 +166,15 @@ Recomendation:&#13;
                     </preprocessing>
                     <triggers>
                         <trigger>
-                            <expression>{last()}&gt;0&#13;
+                            <expression>{last(#3)}&gt;0&#13;
 and&#13;
 {$DMESG.DISABLE}=0</expression>
                             <name>dmesg &quot;err&quot; messages increased</name>
-                            <priority>INFO</priority>
+                            <priority>AVERAGE</priority>
                             <description>Description:&#13;
-    Linux dmesg has errors with level &quot;err&quot;, posibly there are some problem on the server.&#13;
+    Linux dmesg has errors with level &quot;err&quot;, there are some problem on the server.&#13;
 &#13;
-Recomendation:&#13;
+Recommendation:&#13;
     Go to server an run command:&#13;
     dmesg -l err -T</description>
                             <manual_close>YES</manual_close>
@@ -222,22 +228,6 @@ Recomendation:&#13;
                             <params/>
                         </step>
                     </preprocessing>
-                    <triggers>
-                        <trigger>
-                            <expression>{last()}&gt;0&#13;
-and&#13;
-{$DMESG.DISABLE}=0</expression>
-                            <name>dmesg &quot;warn&quot; messages increased</name>
-                            <priority>INFO</priority>
-                            <description>Description:&#13;
-    Linux dmesg has errors with level &quot;warn&quot;, posibly there are some problem on the server.&#13;
-&#13;
-Recomendation:&#13;
-    Go to server an run command:&#13;
-    dmesg -l warn -T</description>
-                            <manual_close>YES</manual_close>
-                        </trigger>
-                    </triggers>
                 </item>
             </items>
             <macros>
