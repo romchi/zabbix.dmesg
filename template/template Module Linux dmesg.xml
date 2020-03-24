@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+  <version>4.4</version>
+  <groups>
+    <group>
+      <name>Templates</name>
+    </group>
+    <group>
+      <name>Templates/Hardware</name>
+    </group>
+    <group>
+      <name>Templates/Modules</name>
+    </group>
+  </groups>
+  <templates>
+    <template>
+      <template>template Module Linux dmesg</template>
+      <name>template Module Linux dmesg</name>
+      <description>Collect count of dmesg messages by error level.
+
+Additional info you can get in repo https://github.com/romchi/zabbix.dmesg</description>
+      <groups>
+        <group>
+          <name>Templates</name>
+        </group>
+        <group>
+          <name>Templates/Hardware</name>
+        </group>
+        <group>
+          <name>Templates/Modules</name>
+        </group>
+      </groups>
+      <applications>
+        <application>
+          <name>Linux dmesg</name>
+        </application>
+      </applications>
+      <items>
+        <item>
+          <name>dmesg count "alert" messages</name>
+          <key>zabbix.dmesg[alert]</key>
+          <delay>5m</delay>
+          <applications>
+            <application>
+              <name>Linux dmesg</name>
+            </application>
+          </applications>
+          <preprocessing>
+            <step>
+              <type>SIMPLE_CHANGE</type>
+              <params/>
+            </step>
+          </preprocessing>
+          <triggers>
+            <trigger>
+              <expression>{last(#3)}&gt;0
+and
+{$DMESG.DISABLE}=0</expression>
+              <name>dmesg "alert" messages increased</name>
+              <priority>HIGH</priority>
+              <description>Description:
+    Linux dmesg has errors with level "alert", there are some problem on the server.
+
+Recommendation:
+    Go to server an run command:
+    dmesg -l alert -T</description>
+              <manual_close>YES</manual_close>
+            </trigger>
+          </triggers>
+        </item>
+        <item>
+          <name>dmesg count "crit" messages</name>
+          <key>zabbix.dmesg[crit]</key>
+          <delay>5m</delay>
+          <applications>
+            <application>
+              <name>Linux dmesg</name>
+            </application>
+          </applications>
+          <preprocessing>
+            <step>
+              <type>SIMPLE_CHANGE</type>
+              <params/>
+            </step>
+          </preprocessing>
+          <triggers>
+            <trigger>
+              <expression>{last(#3)}&gt;0
+and
+{$DMESG.DISABLE}=0</expression>
+              <name>dmesg "crit" messages increased</name>
+              <priority>DISASTER</priority>
+              <description>Description:
+    Linux dmesg has errors with level "crit", there are some problem on the server.
+
+Recommendation:
+    Go to server an run command:
+    dmesg -l crit -T</description>
+              <manual_close>YES</manual_close>
+            </trigger>
+          </triggers>
+        </item>
+        <item>
+          <name>dmesg count "debug" messages</name>
+          <key>zabbix.dmesg[debug]</key>
+          <delay>5m</delay>
+          <applications>
+            <application>
+              <name>Linux dmesg</name>
+            </application>
+          </applications>
+          <preprocessing>
+            <step>
+              <type>SIMPLE_CHANGE</type>
+              <params/>
+            </step>
+          </preprocessing>
+        </item>
+        <item>
+          <name>dmesg count "emerg" messages</name>
+          <key>zabbix.dmesg[emerg]</key>
+          <delay>5m</delay>
+          <applications>
+            <application>
+              <name>Linux dmesg</name>
+            </application>
+          </applications>
+          <preprocessing>
+            <step>
+              <type>SIMPLE_CHANGE</type>
+              <params/>
+            </step>
+          </preprocessing>
+          <triggers>
+            <trigger>
+              <expression>{last(#3)}&gt;0
+and
+{$DMESG.DISABLE}=0</expression>
+              <name>dmesg "emerg" messages increased</name>
+              <priority>HIGH</priority>
+              <description>Description:
+    Linux dmesg has errors with level "emerg", there are some problem on the server.
+
+Recommendation:
+    Go to server an run command:
+    dmesg -l emerg -T</description>
+              <manual_close>YES</manual_close>
+            </trigger>
+          </triggers>
+        </item>
+        <item>
+          <name>dmesg count "err" messages</name>
+          <key>zabbix.dmesg[err]</key>
+          <delay>5m</delay>
+          <applications>
+            <application>
+              <name>Linux dmesg</name>
+            </application>
+          </applications>
+          <preprocessing>
+            <step>
+              <type>SIMPLE_CHANGE</type>
+              <params/>
+            </step>
+          </preprocessing>
+          <triggers>
+            <trigger>
+              <expression>{last(#3)}&gt;0
+and
+{$DMESG.DISABLE}=0</expression>
+              <name>dmesg "err" messages increased</name>
+              <priority>AVERAGE</priority>
+              <description>Description:
+    Linux dmesg has errors with level "err", there are some problem on the server.
+
+Recommendation:
+    Go to server an run command:
+    dmesg -l err -T</description>
+              <manual_close>YES</manual_close>
+            </trigger>
+          </triggers>
+        </item>
+        <item>
+          <name>dmesg count "info" messages</name>
+          <key>zabbix.dmesg[info]</key>
+          <delay>5m</delay>
+          <applications>
+            <application>
+              <name>Linux dmesg</name>
+            </application>
+          </applications>
+          <preprocessing>
+            <step>
+              <type>SIMPLE_CHANGE</type>
+              <params/>
+            </step>
+          </preprocessing>
+        </item>
+        <item>
+          <name>dmesg count "notice" messages</name>
+          <key>zabbix.dmesg[notice]</key>
+          <delay>5m</delay>
+          <applications>
+            <application>
+              <name>Linux dmesg</name>
+            </application>
+          </applications>
+          <preprocessing>
+            <step>
+              <type>SIMPLE_CHANGE</type>
+              <params/>
+            </step>
+          </preprocessing>
+        </item>
+        <item>
+          <name>dmesg count "warn" messages</name>
+          <key>zabbix.dmesg[warn]</key>
+          <delay>5m</delay>
+          <applications>
+            <application>
+              <name>Linux dmesg</name>
+            </application>
+          </applications>
+          <preprocessing>
+            <step>
+              <type>SIMPLE_CHANGE</type>
+              <params/>
+            </step>
+          </preprocessing>
+        </item>
+      </items>
+      <macros>
+        <macro>
+          <macro>{$DMESG.DISABLE}</macro>
+          <value>0</value>
+          <description>To disable dmesg triggers set to 1</description>
+        </macro>
+      </macros>
+    </template>
+  </templates>
+  <graphs>
+    <graph>
+      <name>Linux dmesg errors counters</name>
+      <ymin_type_1>FIXED</ymin_type_1>
+      <graph_items>
+        <graph_item>
+          <color>199C0D</color>
+          <item>
+            <host>template Module Linux dmesg</host>
+            <key>zabbix.dmesg[alert]</key>
+          </item>
+        </graph_item>
+        <graph_item>
+          <sortorder>1</sortorder>
+          <color>F63100</color>
+          <item>
+            <host>template Module Linux dmesg</host>
+            <key>zabbix.dmesg[crit]</key>
+          </item>
+        </graph_item>
+        <graph_item>
+          <sortorder>2</sortorder>
+          <color>2774A4</color>
+          <item>
+            <host>template Module Linux dmesg</host>
+            <key>zabbix.dmesg[debug]</key>
+          </item>
+        </graph_item>
+        <graph_item>
+          <sortorder>3</sortorder>
+          <color>F7941D</color>
+          <item>
+            <host>template Module Linux dmesg</host>
+            <key>zabbix.dmesg[emerg]</key>
+          </item>
+        </graph_item>
+        <graph_item>
+          <sortorder>4</sortorder>
+          <color>FC6EA3</color>
+          <item>
+            <host>template Module Linux dmesg</host>
+            <key>zabbix.dmesg[err]</key>
+          </item>
+        </graph_item>
+        <graph_item>
+          <sortorder>5</sortorder>
+          <color>6C59DC</color>
+          <item>
+            <host>template Module Linux dmesg</host>
+            <key>zabbix.dmesg[info]</key>
+          </item>
+        </graph_item>
+        <graph_item>
+          <sortorder>6</sortorder>
+          <color>C7A72D</color>
+          <item>
+            <host>template Module Linux dmesg</host>
+            <key>zabbix.dmesg[notice]</key>
+          </item>
+        </graph_item>
+        <graph_item>
+          <sortorder>7</sortorder>
+          <color>BA2A5D</color>
+          <item>
+            <host>template Module Linux dmesg</host>
+            <key>zabbix.dmesg[warn]</key>
+          </item>
+        </graph_item>
+      </graph_items>
+    </graph>
+  </graphs>
+</zabbix_export>
